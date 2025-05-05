@@ -1,7 +1,7 @@
 from distutils.command.clean import clean
 
 
-class Numbers_Class:
+class Drob:
     def __init__(self, value1, value2):
         self.value1 = value1
         self.value2 = value2
@@ -21,7 +21,7 @@ class Numbers_Class:
     def get_list(self):
         return [self.value1 * self.value2, int(self.value1 / self.value2), int(self.value1 - self.value2), int(self.value1 + self.value2)]
 
-num_class = Numbers_Class(4/8, 1/2)
+num_class = Drob(4/8, 1/2)
 
 print(num_class.get_list())
 
