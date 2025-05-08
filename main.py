@@ -1,26 +1,51 @@
 from ast import literal_eval
 from distutils.command.clean import clean
 
-
+# value1 знаментаель первой дроби
+# value2 числотель перовй дробм
+# value12 знаменатель второй дроби
+# value22 чсилитель второй дроби
 class Fraction:
-    def __init__(self, value1, value2):
+    def __init__(self, value1, value2, value12, value22, float1, float2):
         self.value1 = value1
         self.value2 = value2
+        self.value12 = value12
+        self.value22 = value22
+        self.float1 = float1
+        self.float2 = float2
+
+    def get_float1(self, float1):
+        self.float1 = self.value1/self.value2
+        return float1
+
+    def get_float2(self, float2):
+        self.float2 = self.value12/self.value22
+        return float2
 
     def multiply(self):
-        return self.value1*self.value2
+        return self.float1*self.float2
 
     def devision(self):
-        return self.value1/self.value2
+        return self.float1/self.float2
 
     def addition(self):
-        return self.value1+self.value2
+        return self.float1+self.float2
 
     def subtraction(self):
-        return self.value1-self.value2
+        return self.float1-self.float2
 
-    def get_list(self):
-        return (f'Результат умножения: {self.value1 * self.value2}\nРезультат деления: {int(self.value1 / self.value2)}\nРезультат вычитания: {int(self.value1 - self.value2)}\nРезультат сложения: {int(self.value1 + self.value2)}')
+    def get_list_multiply(self):
+        return (f'Результат умножения: {self.float1*self.float2}')
+
+    def get_list_devision(self):
+        return (f'Результат деления: {self.float1/self.float2}')
+
+    def get_list_addition(self):
+        return (f'Результат сложения: {self.float1+self.float2}')
+
+    def get_list_subtraction(self):
+        return (f'Результат вычитания: {self.float1-self.float2}')
+
 
 # value3 = celcia
 # value4 = farengeit
@@ -87,11 +112,37 @@ class Perevod2:
 print('Выберете действие:\n1-Работа с дробями\n2-Перевод из цельсий в фаренгейты и наоборот\n3-Перевод из миль в метры и наоборот\n4-Перевод из галонов в литры и наоборот')
 action_choice = input('Ваш выбор(напишите цифру):')
 if '1' in action_choice:
-    print('Вы выбрали работа с дробями!\nВведите данные:')
-    fraction1 = int(input('Первая дробь:'))
-    fraction2 = int(input('Вторая дробь:'))
-    num_class = Fraction(fraction1, fraction2)
-    print(num_class.get_list())
+    print('Вы выбрали работа с дробями!\nВыберите действие:\n1-Умножение\n2-Деление\n3-Сложение\n4-Вычитание')
+    action_choice5 = input('Ваш выбор(напишите цифру):')
+
+    if '1' in action_choice5:
+        fraction1 = int(input('Знаменатель первой дроби:'))
+        fraction2 = int(input('Числитель первой дроби:'))
+        fraction3 = int(input('Знаменатель второй дроби:'))
+        fraction4 = int(input('Числитель второй дроби:'))
+        num_class = Fraction(fraction1, fraction2, fraction3, fraction4, float1=fraction1/fraction2, float2=fraction3/fraction4)
+        print(num_class.get_list_multiply())
+    if '2' in action_choice5:
+        fraction1 = int(input('Знаменатель первой дроби:'))
+        fraction2 = int(input('Числитель первой дроби:'))
+        fraction3 = int(input('Знаменатель второй дроби:'))
+        fraction4 = int(input('Числитель второй дроби:'))
+        num_class = Fraction(fraction1, fraction2, fraction3, fraction4, float1=fraction1/fraction2, float2=fraction3/fraction4)
+        print(num_class.get_list_devision())
+    if '3' in action_choice5:
+        fraction1 = int(input('Знаменатель первой дроби:'))
+        fraction2 = int(input('Числитель первой дроби:'))
+        fraction3 = int(input('Знаменатель второй дроби:'))
+        fraction4 = int(input('Числитель второй дроби:'))
+        num_class = Fraction(fraction1, fraction2, fraction3, fraction4, float1=fraction1/fraction2, float2=fraction3/fraction4)
+        print(num_class.get_list_addition())
+    if '4' in action_choice5:
+        fraction1 = int(input('Знаменатель первой дроби:'))
+        fraction2 = int(input('Числитель первой дроби:'))
+        fraction3 = int(input('Знаменатель второй дроби:'))
+        fraction4 = int(input('Числитель второй дроби:'))
+        num_class = Fraction(fraction1, fraction2, fraction3, fraction4, float1=fraction1/fraction2, float2=fraction3/fraction4)
+        print(num_class.get_list_subtraction())
 if '2' in action_choice:
     print('Перевод из фаренгейты в цельсия и наоборот!\nВыбирите действие:\n1-Цельсия в фаренгейты\n2-Фаренгейты в цельсия')
     action_choice4 = input('Ваш выбор(напишите цифру):')
