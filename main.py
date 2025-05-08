@@ -37,8 +37,10 @@ class Graducnic:
     def fartocel(self):
         return (self.value4-32)*5/9
 
-    def get_list(self):
-        return (f'Цельсия в фаренгейты: {(self.value3*9/5)+32}\nФаренгейты в цельсия: {(self.value4-32)*5/9}')
+    def get_list1(self):
+        return (f'Цельсия в фаренгейты: {(self.value3*9/5)+32}')
+    def get_list2(self):
+        return (f'Фаренгейты в цельсия: {(self.value4-32)*5/9}')
 
 # value5 = metr
 # value6 = mili
@@ -56,8 +58,10 @@ class Perevod:
     def militometr(self):
         return self.value5*1609
 
-    def get_list(self):
-        return (f'Метры в мили: {self.value6 / 1609}\nМили в метры: {self.value5 * 1609}')
+    def get_list1(self):
+        return (f'Метры в мили: {self.value5/1609}')
+    def get_list2(self):
+        return (f'Мили в метры: {self.value6*1609}')
 
 # value7 = litr
 # value8 = galon
@@ -74,8 +78,10 @@ class Perevod2:
     @staticmethod
     def galontolitr(self):
         return self.value8*3.785
-    def get_list(self):
-        return (f'Литры в галоны: {self.value7/3.785}\nГалоны в литры: {self.value8*3.785}')
+    def get_list1(self):
+        return (f'Галоны в литры: {self.value8*3.785}')
+    def get_list2(self):
+        return (f'Литры в галоны: {self.value7/3.785}')
 
 # Интерфейс
 print('Выберете действие:\n1-Работа с дробями\n2-Перевод из цельсий в фаренгейты и наоборот\n3-Перевод из миль в метры и наоборот\n4-Перевод из галонов в литры и наоборот')
@@ -87,23 +93,47 @@ if '1' in action_choice:
     num_class = Fraction(fraction1, fraction2)
     print(num_class.get_list())
 if '2' in action_choice:
-    print('Вы выбрали перевод из цельсий в фаренгейты и наоборот!\nВведите данные:')
-    fahrenheit = int(input('Фаренгейты:'))
-    celsius = int(input('Цельсия:'))
-    num_class = Graducnic(celsius, fahrenheit)
-    print(num_class.get_list())
+    print('Перевод из фаренгейты в цельсия и наоборот!\nВыбирите действие:\n1-Цельсия в фаренгейты\n2-Фаренгейты в цельсия')
+    action_choice4 = input('Ваш выбор(напишите цифру):')
+    if '1' in action_choice4:
+        print('Вы выбрали перевод из цельсия в фаренгейты!\nВведите данные:')
+        celcia = int(input('Цельсия:'))
+        farengeit = None
+        num_class = Graducnic(celcia, farengeit)
+        print(num_class.get_list1())
+    if '2' in action_choice4:
+        print('Вы выбрали перевод из фарегнейтов в цельсия!\nВведите данные:')
+        celcia = None
+        farengeit = int(input('Фаренгейты:'))
+        num_class = Graducnic(celcia, farengeit)
+        print(num_class.get_list2())
 if '3' in action_choice:
-    print('Перевод из миль в метры и наоборот!\nВведите данные:')
-    mili = int(input('Мили:'))
-    metr = int(input('Метры:'))
-    num_class = Perevod(metr, mili)
-    print(num_class.get_list())
-    print('!!!Может присутствовать небольшая погрешность!!!')
+    print('Перевод из мили в метры и наоборот!\nВыбирите действие:\n1-Метры в мили\n2-Мили в метры')
+    action_choice3 = input('Ваш выбор(напишите цифру):')
+    if '1' in action_choice3:
+        print('Вы выбрали перевод из метров в мили!\nВведите данные:')
+        mili = None
+        metr = int(input('Метры:'))
+        num_class = Perevod(metr, mili)
+        print(num_class.get_list1())
+    if '2' in action_choice3:
+        print('Вы выбрали перевод из милей в метры!\nВведите данные:')
+        mili = int(input('Мили:'))
+        metr = None
+        num_class = Perevod(metr, mili)
+        print(num_class.get_list2())
 if '4' in action_choice:
-    print('Перевод из галонов в литры и наоборот!\nВведите данные:')
-    litr = int(input('Литры:'))
-    galon = int(input('Галоны:'))
-    num_class = Perevod2(litr, galon)
-    print(num_class.get_list())
-    print('!!!Может присутствовать небольшая погрешность!!!')
-
+    print('Перевод из галонов в литры и наоборот!\nВыбирите действие:\n1-Галоны в литры\n2-Литры в галоны')
+    action_choice2 = input('Ваш выбор(напишите цифру):')
+    if '1' in action_choice2:
+        print('Вы выбрали перевод из галонов в литры!\nВведите данные:')
+        galon = int(input('Галоны:'))
+        litr = None
+        num_class = Perevod2(litr, galon)
+        print(num_class.get_list1())
+    if '2' in action_choice2:
+        print('Вы выбрали перевод из литров в галоны!\nВведите данные:')
+        litr = int(input('Литры:'))
+        galon = None
+        num_class = Perevod2(litr, galon)
+        print(num_class.get_list2())
